@@ -8,6 +8,27 @@ export default function Header() {
       <NavLink to="/"> </NavLink>
       <NavLink to="/by-region"> </NavLink>
       <NavLink to="/by-name"> </NavLink>
+
+      <ul
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          listStyle: "none",
+          margin: "auto",
+          gap: "12rem",
+          width: "100vw",
+        }}
+      >
+        <li>
+          <a href="all-countries">All Countries</a>
+        </li>
+        <li>
+          <a href="by-region">By Region</a>
+        </li>
+        <li>
+          <a href="by-name">By Name</a>
+        </li>
+      </ul>
     </div>
   );
 }

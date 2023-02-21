@@ -1,25 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchResult from "../SearchResult";
 
 export default function ByName() {
-  //save the user input in a local state (call it searchInput), then fetch that country on submit, then save the received country in another local state (call it country) - always check how does the response look like using console.log before saving it in the state. 
+  const [name, setName] = useState({});
+  const [country, setCountry] = useState([]);
 
+  useEffect(() => {
+    fetch(`https://restcountries.com/v2/name/${name}`)
+      .then((response) => response.json())
+      .then((data) => setCountry(data));
+  }, [name]);
 
-  const handleChange = () => {
-   
-  };
+  // const handleChange = () => {};
 
-  const handleSubmit = () => {
-   
+  const handleSubmit = (e) => {
+    e.target.name && setName(e.target.value);
   };
 
   return (
     <div>
-      <form style={{ padding: "30px" }}>
+      <form onSubmit={handleSubmit} style={{ padding: "30px" }}>
         <input type="text" />
         <button>search</button>
       </form>
-      {/* show the country you received from fetch and saved in the local state (use SearchResult component to display that country) */}
+      <SearchResult country={name} />
     </div>
   );
 }

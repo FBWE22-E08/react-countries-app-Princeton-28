@@ -9,7 +9,7 @@ import NotFound from "./components/views/NotFound";
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header  />
 
       <Routes>
         <Route path="/" element={<AllCountries />} />
